@@ -20,4 +20,16 @@ wget http://www.statmt.org/europarl/v7/fr-en.tgz
 
 ## Extraing the files
 tar -xf fr-en.tgz -C data/
+
+## Clone this repository to get the python script for creating train, test, val
+git clone https://github.com/R1j1t/NMT-with-OpenNMT-Py.git
+cd NMT-with-OpenNMT-Py
+
+## This will create 3 divisons in the dataset
+python3 dataset_split.py
+
+cd ..
+
+## Install `perl` and run the default tokenizer script (you can use your own tokenizer)
+
 ```
