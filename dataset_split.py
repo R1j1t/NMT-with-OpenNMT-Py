@@ -6,9 +6,9 @@ from subprocess import Popen, PIPE
 
 # TODO: Correct the output, has `"` as the starting character
 
-#path = input('Enter the directory in which Fr and En txt files are:')
+path = input('Enter the directory in which Fr and En txt files are:')
 
-with open('/Users/rajat/Downloads/fr-en/europarl-v7.fr-en.fr', 'r') as file:
+with open('{0}/europarl-v7.fr-en.fr'.format(path), 'r') as file:
 	fr_snts = file.readlines()
 
 	## Mapping the sentences with the help of a dataframe
