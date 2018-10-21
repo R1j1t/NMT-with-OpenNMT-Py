@@ -31,5 +31,12 @@ python3 dataset_split.py
 cd ..
 
 ## Install `perl` and run the default tokenizer script (you can use your own tokenizer)
+perl ../tools/tokenizer.perl -a -no-escape -l en < train.en > train.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < train.fr > train.fr.atok
+perl ../tools/tokenizer.perl -a -no-escape -l en < valid.en > valid.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < valid.fr > valid.fr.atok
+perl ../tools/tokenizer.perl -a -no-escape -l en < test.en > test.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < test.fr > test.fr.atok
+
 
 ```
