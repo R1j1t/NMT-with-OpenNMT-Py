@@ -30,13 +30,28 @@ python3 dataset_split.py
 
 cd ..
 
-## Install `perl` and run the default tokenizer script (you can use your own tokenizer)
-perl ../tools/tokenizer.perl -a -no-escape -l en < train.en > train.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < train.fr > train.fr.atok
-perl ../tools/tokenizer.perl -a -no-escape -l en < valid.en > valid.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < valid.fr > valid.fr.atok
-perl ../tools/tokenizer.perl -a -no-escape -l en < test.en > test.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < test.fr > test.fr.atok
 
+## Install `perl`
+## Run the default tokenizer script to tokenize the dataset
+## You can use your own tokenizer, but remember to use the same tokenizer in production
+perl ../tools/tokenizer.perl -a -no-escape -l en < ./fr-en/train.en > ./fr-en/train.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < ./fr-en/train.fr > ./fr-en/train.fr.atok
+perl ../tools/tokenizer.perl -a -no-escape -l en < ./fr-en/valid.en > ./fr-en/valid.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < ./fr-en/valid.fr > ./fr-en/valid.fr.atok
+perl ../tools/tokenizer.perl -a -no-escape -l en < ./fr-en/test.en > ./fr-en/test.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < ./fr-en/test.fr > ./fr-en/test.fr.atok
 
+## Moving back to main folder
+cd ..
+
+## Creating the vocab using the OpenNMT-Py Preprocessing
+python preprocess.py -train_src data/fr-en/train.en.atok -train_tgt data/fr-en/train.de.atok -valid_src data/fr-en/val.en.atok -valid_tgt data/fr-en/val.de.atok -save_data data/fr-en.atok.low -lower
+
+## Training the model
+python train.py -data data/fr-en.atok.low -save_model data/fr-en/ckt/fr-en_model -gpu_ranks 0 -enc_layers 2 -dec_layer 2 -optim adam -learning_rate 0.001 -update_learning_rate False
+
+## Translate on trained model
+python translate.py -gpu 0 -model data/fr-en/ckt/fr-en_model_*_e13.pt -src data/multi30k/test2016.en.atok -tgt data/multi30k/test2016.de.atok -replace_unk -verbose -output multi30k.test.pred.atok
 ```
+
+Thats it!!
