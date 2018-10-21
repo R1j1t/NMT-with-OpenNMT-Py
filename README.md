@@ -35,12 +35,12 @@ cd ..
 ## Install `perl`
 ## Run the default tokenizer script to tokenize the dataset
 ## You can use your own tokenizer, but remember to use the same tokenizer in production
-perl ../tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/train.en > ./data/fr-en/train.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/train.fr > ./data/fr-en/train.fr.atok
-perl ../tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/valid.en > ./data/fr-en/valid.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/valid.fr > ./data/fr-en/valid.fr.atok
-perl ../tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/test.en > ./data/fr-en/test.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/test.fr > ./data/fr-en/test.fr.atok
+perl ./tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/train.en > ./data/fr-en/train.en.atok
+perl ./tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/train.fr > ./data/fr-en/train.fr.atok
+perl ./tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/valid.en > ./data/fr-en/valid.en.atok
+perl ./tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/valid.fr > ./data/fr-en/valid.fr.atok
+perl ./tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/test.en > ./data/fr-en/test.en.atok
+perl ./tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/test.fr > ./data/fr-en/test.fr.atok
 
 ## Moving back to main folder
 cd ..
