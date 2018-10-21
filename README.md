@@ -19,7 +19,8 @@ pip install -r requirements.txt
 wget http://www.statmt.org/europarl/v7/fr-en.tgz
 
 ## Extraing the files
-tar -xf fr-en.tgz -C data/
+mkdir ./data/fr-en
+tar -xf fr-en.tgz -C data/fr-en/
 
 ## Clone this repository to get the python script for creating train, test, val
 git clone https://github.com/R1j1t/NMT-with-OpenNMT-Py.git
@@ -34,12 +35,12 @@ cd ..
 ## Install `perl`
 ## Run the default tokenizer script to tokenize the dataset
 ## You can use your own tokenizer, but remember to use the same tokenizer in production
-perl ../tools/tokenizer.perl -a -no-escape -l en < ./fr-en/train.en > ./fr-en/train.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < ./fr-en/train.fr > ./fr-en/train.fr.atok
-perl ../tools/tokenizer.perl -a -no-escape -l en < ./fr-en/valid.en > ./fr-en/valid.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < ./fr-en/valid.fr > ./fr-en/valid.fr.atok
-perl ../tools/tokenizer.perl -a -no-escape -l en < ./fr-en/test.en > ./fr-en/test.en.atok
-perl ../tools/tokenizer.perl -a -no-escape -l fr < ./fr-en/test.fr > ./fr-en/test.fr.atok
+perl ../tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/train.en > ./data/fr-en/train.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/train.fr > ./data/fr-en/train.fr.atok
+perl ../tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/valid.en > ./data/fr-en/valid.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/valid.fr > ./data/fr-en/valid.fr.atok
+perl ../tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/test.en > ./data/fr-en/test.en.atok
+perl ../tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/test.fr > ./data/fr-en/test.fr.atok
 
 ## Moving back to main folder
 cd ..
