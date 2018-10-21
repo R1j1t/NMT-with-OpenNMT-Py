@@ -29,8 +29,8 @@ cd NMT-with-OpenNMT-Py
 ## This will create 3 divisons in the dataset
 python3 dataset_split.py
 
+## Moving back to main folder
 cd ..
-
 
 ## Install `perl`
 ## Run the default tokenizer script to tokenize the dataset
@@ -43,11 +43,8 @@ perl ./tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/val.fr > ./data/f
 perl ./tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/test.en > ./data/fr-en/test.en.atok
 perl ./tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/test.fr > ./data/fr-en/test.fr.atok
 
-## Moving back to main folder
-cd ..
-
 ## Creating the vocab using the OpenNMT-Py Preprocessing
-python preprocess.py -train_src data/fr-en/train.en.atok -train_tgt data/fr-en/train.de.atok -valid_src data/fr-en/val.en.atok -valid_tgt data/fr-en/val.de.atok -save_data data/fr-en.atok.low -lower
+python preprocess.py -train_src data/fr-en/train.en.atok -train_tgt data/fr-en/train.fr.atok -valid_src data/fr-en/val.en.atok -valid_tgt data/fr-en/val.fr.atok -save_data data/fr-en.atok.low -lower
 
 ## Training the model
 python train.py -data data/fr-en.atok.low -save_model data/fr-en/ckt/fr-en_model -gpu_ranks 0 -enc_layers 2 -dec_layer 2 -optim adam -learning_rate 0.001 -update_learning_rate False
