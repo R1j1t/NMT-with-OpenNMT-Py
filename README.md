@@ -44,10 +44,10 @@ perl ./tools/tokenizer.perl -a -no-escape -l en < ./data/fr-en/test.en > ./data/
 perl ./tools/tokenizer.perl -a -no-escape -l fr < ./data/fr-en/test.fr > ./data/fr-en/test.fr.atok
 
 ## Creating the vocab using the OpenNMT-Py Preprocessing
-python preprocess.py -train_src data/fr-en/train.en.atok -train_tgt data/fr-en/train.fr.atok -valid_src data/fr-en/val.en.atok -valid_tgt data/fr-en/val.fr.atok -save_data data/fr-en.atok.low -lower
+python3 preprocess.py -train_src data/fr-en/train.en.atok -train_tgt data/fr-en/train.fr.atok -valid_src data/fr-en/val.en.atok -valid_tgt data/fr-en/val.fr.atok -save_data data/fr-en/fr-en.atok.low -lower
 
 ## Training the model
-python train.py -data data/fr-en.atok.low -save_model data/fr-en/ckt/fr-en_model -gpu_ranks 0 -enc_layers 2 -dec_layer 2 -optim adam -learning_rate 0.001 -update_learning_rate False
+python3 train.py -data data/fr-en.atok.low -save_model data/fr-en/ckt/fr-en_model -gpu_ranks 0 -enc_layers 2 -dec_layer 2 -optim adam -learning_rate 0.001 -update_learning_rate False
 
 ## Translate on trained model
 python translate.py -gpu 0 -model data/fr-en/ckt/fr-en_model_*_e13.pt -src data/multi30k/test2016.en.atok -tgt data/multi30k/test2016.de.atok -replace_unk -verbose -output multi30k.test.pred.atok
