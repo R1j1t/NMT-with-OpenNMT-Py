@@ -34,13 +34,18 @@ test  = dataset.iloc[val_marker:test_marker,:]
 ## Output files
 train.to_csv('../data/fr-en/train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
 train.to_csv('../data/fr-en/train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
-valid.to_csv('../data/fr-en/train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
-valid.to_csv('../data/fr-en/train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
-test.to_csv('../data/fr-en/train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
-test.to_csv('../data/fr-en/train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
+print('Training File Exported')
+
+valid.to_csv('../data/fr-en/val.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
+valid.to_csv('../data/fr-en/val.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
+print('Validation File Exported')
+
+test.to_csv('../data/fr-en/test.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
+test.to_csv('../data/fr-en/test.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
+print('Test File Exported')
 
 ## CHECK: Try to run the perl scripts from python
-for j in ['train','valid','test']:
-	for i in ['en','fr']:
-		var = r'./data/{}.{}.atok'.format(j,i)
-		print('perl ../tools/tokenizer.perl -a -no-escape -l {0} < {1}.{2} > {3}.{4}.atok'.format(i,j,i,j,i))
+# for j in ['train','valid','test']:
+# 	for i in ['en','fr']:
+# 		var = r'./data/{}.{}.atok'.format(j,i)
+# 		print('perl ../tools/tokenizer.perl -a -no-escape -l {0} < {1}.{2} > {3}.{4}.atok'.format(i,j,i,j,i))
