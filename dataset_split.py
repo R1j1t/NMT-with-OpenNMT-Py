@@ -32,12 +32,12 @@ test  = dataset.iloc[val_marker:test_marker,:]
 #print(train.head())
 
 ## Output files
-train.to_csv('./data/fr-en//train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
-train.to_csv('./data/fr-en//train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
-valid.to_csv('./data/fr-en//train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
-valid.to_csv('./data/fr-en//train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
-test.to_csv('./data/fr-en//train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
-test.to_csv('./data/fr-en//train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
+train.to_csv('../data/fr-en/train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
+train.to_csv('../data/fr-en/train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
+valid.to_csv('../data/fr-en/train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
+valid.to_csv('../data/fr-en/train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
+test.to_csv('../data/fr-en/train.fr',line_terminator='', columns=['fr'],header=False,index=False,sep=' ',encoding='utf-8')
+test.to_csv('../data/fr-en/train.en',line_terminator='', columns=['en'],header=False,index=False,sep=' ',encoding='utf-8')
 
 ## CHECK: Try to run the perl scripts from python
 for j in ['train','valid','test']:
